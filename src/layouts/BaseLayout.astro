@@ -16,10 +16,23 @@ const { pageTitle } = Astro.props
   <body>
     <Header />
     <h1>{pageTitle}</h1>
-    <slot />
+    <div class='flex-container'>
+      <slot />
+    </div>
     <Footer />
     <script>
       import '../scripts/menu.js'
     </script>
   </body>
+
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .flex-container {
+      flex: 1 0 auto;
+    }
+  </style>
 </html>
