@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 const pageTitle = 'Astro Learning Blog'
+const allPosts = Object.values(await import.meta.glob('./posts/*.md'))
+
+console.log('All posts: ', allPosts)
 ---
 
 <BaseLayout pageTitle={pageTitle}>
