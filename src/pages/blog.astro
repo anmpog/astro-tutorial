@@ -1,8 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import Blogpost from '../components/Blogpost.astro'
 const pageTitle = 'Astro Learning Blog'
-const allPosts = Object.values(await import.meta.glob('./posts/*.md'))
-
+const allPosts = Object.values(
+  await import.meta.glob('./posts/*.md', { eager: true })
+)
 console.log('All posts: ', allPosts)
 ---
 
@@ -10,8 +12,10 @@ console.log('All posts: ', allPosts)
   <p>This is where I will post about my journey learning Astro.</p>
 
   <ul>
-    <li><a href='/posts/first-post/'>First Post</a></li>
-    <li><a href='/posts/second-post/'>Second Post</a></li>
-    <li><a href='/posts/third-post/'>Third Post</a></li>
+    {
+      allPosts.map((post: any) => (
+        <Blogpost url={post.url} title={post.frontmatter.title} />
+      ))
+    }
   </ul>
 </BaseLayout>
