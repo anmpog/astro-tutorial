@@ -1,5 +1,14 @@
 ---
 const pageTitle = 'About Me'
+
+const identity = {
+  firstName: 'Anthony',
+  country: 'the United States',
+  occupation: 'Software Developer',
+  hobbies: ['climbing', 'cycling', 'video games'],
+}
+
+const skills = ['HTML', 'CSS', 'JavaScript', 'React', 'Astro', 'Writing Docs']
 ---
 
 <html lang='en'>
@@ -20,8 +29,23 @@ const pageTitle = 'About Me'
     </p>
 
     <p>
-      This site will update as I complete more of the tutorial, so keep checking
-      back and see how my journey is going!
+      My name is {identity.firstName}. I am from the {identity.country}. When I
+      have a job, I am a {identity.occupation}. My hobbies include:
     </p>
+    <ul>
+      {
+        identity.hobbies.map((hobby: string) => {
+          return <li>{hobby}</li>
+        })
+      }
+    </ul>
+    <p>My software development skills include:</p>
+    <ul>
+      {
+        skills.map((skill: string) => {
+          return <li>{skill}</li>
+        })
+      }
+    </ul>
   </body>
 </html>
