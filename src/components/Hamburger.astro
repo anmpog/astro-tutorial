@@ -1,0 +1,36 @@
+---
+
+---
+
+<button class='hamburger'>
+  <span class='line'></span>
+  <span class='line'></span>
+  <span class='line'></span>
+</button>
+
+<script>
+  import '../scripts/hamburger.js'
+</script>
+
+<style>
+  .hamburger {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .hamburger .line {
+    display: block;
+    width: 40px;
+    height: 5px;
+    background-color: #ff9776;
+  }
+  @media screen and (min-width: 636px) {
+    .hamburger {
+      display: none;
+    }
+  }
+</style>
