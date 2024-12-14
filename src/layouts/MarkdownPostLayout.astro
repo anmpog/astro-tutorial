@@ -10,8 +10,17 @@ import BaseLayout from './BaseLayout.astro'
     <p>Published on: {frontmatter.pubDate.toString().slice(0, 10)}</p>
     <p><em>{frontmatter.description}</em></p>
   </div>
-  <!-- <img src={frontmatter.image.url} alt={frontmatter.image.alt} width='300' /> -->
-
+  <ul>
+    {
+      frontmatter.tags.map((tag: string) => {
+        return (
+          <li>
+            <a href={`/tags/${tag}`}>{tag}</a>
+          </li>
+        )
+      })
+    }
+  </ul>
   <slot />
 </BaseLayout>
 
@@ -28,7 +37,23 @@ import BaseLayout from './BaseLayout.astro'
     color: white;
   }
 
-  p { 
+  p {
     margin: 0.5rem 0;
+  }
+
+  ul {
+    padding: 0;
+    display: flex;
+    gap: .5rem;
+  }
+  li {
+    list-style: none;
+  }
+
+  li a {
+    padding: 10px;
+    border: 1px solid purple;
+    border-radius: .75rem;
+    text-decoration: none;
   }
 </style>
