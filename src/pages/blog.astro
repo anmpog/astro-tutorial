@@ -1,10 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import BlogPost from '../components/BlogPost.astro'
-const allPosts = Object.values(
-  import.meta.glob('./posts/*.md', { eager: true })
-)
-
+import { getCollection } from 'astro:content'
+const allPosts = await getCollection('blog')
 const pageTitle = 'Blog'
 ---
 
@@ -13,7 +11,7 @@ const pageTitle = 'Blog'
 
   {
     allPosts.map((post: any) => {
-      return <BlogPost url={post.url} postTitle={post.frontmatter.title} />
+      return <BlogPost url={`/posts/${post.id}`} postTitle={post.data.title} />
     })
   }
 </BaseLayout>
